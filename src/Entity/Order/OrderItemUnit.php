@@ -13,4 +13,24 @@ use Sylius\Component\Core\Model\OrderItemUnit as BaseOrderItemUnit;
  */
 class OrderItemUnit extends BaseOrderItemUnit
 {
+    /**
+     * @ORM\Column(name="entry_number", type="string", nullable=true)
+     */
+    private $entryNumber;
+
+    /**
+     * @return mixed
+     */
+    public function getEntryNumber()
+    {
+        return $this->entryNumber;
+    }
+
+    /**
+     * @param mixed $entryNumber
+     */
+    public function setEntryNumber($entryNumber): void
+    {
+        $this->entryNumber = $entryNumber;
+    }
 }
