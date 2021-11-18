@@ -1,2 +1,3 @@
-#sylius_admin_order_item_unit:
-#    resource: "@App/Resources/config/routing/order_item_unit.yml"
+order_item_unit_admin:
+  resource: 'admin_routing.yml'
+  prefix: /admin

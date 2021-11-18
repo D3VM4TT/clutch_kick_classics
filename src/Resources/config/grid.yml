@@ -1,0 +1,23 @@
+sylius_grid:
+  grids:
+    admin_order_item_unit:
+      driver:
+        name: doctrine/orm
+        options:
+          class: App\Entity\Order\OrderItemUnit
+      sorting:
+        id: asc
+      limits: [ 10, 25, 50 ]
+      fields:
+        id:
+          type: string
+          sortable: ~
+          label: "ID"
+        entryNumber:
+          type: string
+          sortable: ~
+          label: "Entry Number"
+      actions:
+        item:
+          show:
+            type: show

@@ -1,0 +1,7 @@
+sylius_resource:
+  resources:
+    app.order_item_unit:
+      driver: doctrine/orm
+      classes:
+        model: App\Entity\Order\OrderItemUnit
+        repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\OrderItemUnitRepository

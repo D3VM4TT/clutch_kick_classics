@@ -7,7 +7,7 @@ imports:
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusPayPalPlugin/Resources/config/config.yaml" }
 
-#    - { resource: "@App/Resources/config/config.yaml" }
+    - { resource: "../../src/Resources/config/services.yml" }
 
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'

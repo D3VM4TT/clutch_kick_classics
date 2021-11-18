@@ -1,2 +1,0 @@
-#imports:
-#    - { resource: "@App/Resources/config/grids/order_item_unit.yml" }

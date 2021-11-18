@@ -14,7 +14,7 @@ final class AdminMenuListener
 
         $menu['sales']
             ->addChild('competition_entries', [
-                'route' => 'sylius_admin_dashboard',
+                'route' => 'app_admin_order_item_unit_index',
             ])
             ->setLabel('Competition Entries')
             ->setLabelAttribute('icon', 'star');

@@ -1,0 +1,35 @@
+soap_affiliate_bundle_admin_referrer_index:
+  resource: |
+    alias: app.order_item_unit
+    section: admin
+    redirect: index
+    except: [create, update, delete]
+    templates: "@SyliusAdmin\\Crud"
+    grid: admin_order_item_unit
+    vars:
+      index:
+        header: 'Competition Entries List'
+  type: sylius.resource
+
+#soap_affiliate_bundle_admin_referrer_show:
+#  path: /referrers/{id}
+#  methods: [GET]
+#  defaults:
+#    _controller: soap_affiliate_bundle.controller.referrer:showAction
+#    _sylius:
+#      template: AffiliateBundle:admin/referrer:show.html.twig
+#      repository:
+#        method: find
+#        arguments: [ $id ]
+#
+#soap_affiliate_bundle_admin_referrer_suspend:
+#  path: /referrers/{id}/suspend
+#  methods: [PUT]
+#  defaults:
+#    _controller: Soap\AffiliateBundle\Controller\Admin\ReferrerController::suspendAction
+#
+#soap_affiliate_bundle_admin_referrer_unsuspend:
+#  path: /referrers/{id}/unsuspend
+#  methods: [PUT]
+#  defaults:
+#    _controller: Soap\AffiliateBundle\Controller\Admin\ReferrerController::unsuspendAction
