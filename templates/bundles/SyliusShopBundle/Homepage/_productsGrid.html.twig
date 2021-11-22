@@ -1,10 +1,3 @@
-<div class="ui grid">
-    <h1>Where is this?</h1>
-    <div class="sixteen wide tablet eight wide computer featured column">
-        {{ render(url('sylius_shop_partial_product_index_latest', {'count': 1, 'template': '@SyliusShop/Homepage/_list.html.twig'})) }}
-    </div>
-    <div class="sixteen wide tablet eight wide computer column">
-        {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Homepage/_list.html.twig'})) }}
-    </div>
+<div class="flex">
+    {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Homepage/_list.html.twig'})) }}
 </div>
-<div class="ui hidden divider"></div>

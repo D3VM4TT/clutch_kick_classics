@@ -1,0 +1,14 @@
+{% if product.imagesByType('thumbnail') is not empty %}
+    {% set path = product.imagesByType('thumbnail').first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% elseif product.images.first %}
+    {% set path = product.images.first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% else %}
+    {% set path = '//placehold.it/200x200' %}
+{% endif %}
+<a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">
+    <div class="bg-gray-400 h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover"
+         {{ sylius_test_html_attribute('main-image') }}
+         style="background-image: url({{ path }})"
+    >
+    </div>
+</a>
