@@ -1,3 +1,7 @@
 app/admin/order_item_unit:
   resource: 'routing/admin/order_item_unit.yml'
 
+app/admin/complete_order_form:
+    resource: 'routing/admin/order_form.yml'
+
+

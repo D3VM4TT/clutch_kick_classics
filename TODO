@@ -1,2 +1,12 @@
--> Add Competition Entry Model
--> Create route & admin view for model
+-------------------------------------------
+STEPS
+-------------------------------------------
+-> Create a entry form for admins
+-> Create a car details page
+    -> this will have the specs of the car
+    -> and a gallery
+    -> Shipping is free locally
+    -> International orders have shipping
+    -> On order completion send email with entry codes
+    ->
+

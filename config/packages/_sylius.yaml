@@ -241,3 +241,18 @@ sylius_theme:
             scan_depth: 1
             directories:
                 - "%kernel.project_dir%/themes"
+
+
+winzou_state_machine:
+    sylius_payment:
+        class: "%sylius.model.payment.class%"
+        callbacks:
+            after:
+                sylius_payment:
+                    # here you are choosing the transition on which the action should take place - we are using the one we have created before
+                    on: ["complete"]
+                    # use service and its method here
+                    do: ['@App\Service\OrderCompletionService', "handleCompetitionEntry"]
+                    # this will be the object of an Order here
+                    args: ["object"]
+                    priority: 100

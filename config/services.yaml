@@ -28,22 +28,45 @@ services:
         resource: '../src/*'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
+
     # Controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
         resource: '../src/Controller'
+        public: true
+        autowire: true
         tags: ['controller.service_arguments']
-     
-     
+
+
     app.command.create_admin:    
         class: App\Command\CreateAdminCommand
         arguments:
           - "@doctrine.orm.entity_manager"
           - "@sylius.factory.admin_user"
+          - "@monolog.logger"
         tags:
           - { name: 'console.command', command: 'app:create-admin'  }
+
+    App\Service\OrderCompletionService:
+        public: true
+        arguments:
+            - '@monolog.logger'
 
     app.listener.admin.menu_builder:
         class: App\Menu\AdminMenuListener
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+#    site_update_manager.superadmin:
+#        class: App\Service\SiteUpdateManager
+#        # you CAN still use autowiring: we just want to show what it looks like without
+#        autowire: false
+#        # manually wire all arguments
+#        arguments:
+#            - '@App\Service\MessageGenerator'
+#            - '@mailer'
+#            - 'superadmin@example.com'
+
+
+
+

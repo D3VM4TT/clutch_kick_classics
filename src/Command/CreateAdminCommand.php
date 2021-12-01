@@ -3,7 +3,9 @@
 namespace App\Command;
 
 use App\Entity\User\AdminUser;
+use App\Service\OrderCompletionService;
 use Doctrine\ORM\EntityManager;
+use Monolog\Logger;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AdminUserExampleFactory;
 use Sylius\Bundle\UserBundle\Factory\UserWithEncoderFactory;
 use Sylius\Component\Core\Model\AdminUserInterface;
@@ -28,15 +30,24 @@ class CreateAdminCommand extends Command
      */
     private $userFactory;
 
+
+    /**
+     * @var Logger
+     */
+    private $logger;
+
+
     /**
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, UserWithEncoderFactory $userWithEncoderFactory)
+    public function __construct(EntityManager $em, UserWithEncoderFactory $userWithEncoderFactory, Logger $logger)
     {
         $this->userFactory = $userWithEncoderFactory;
         $this->em = $em;
-
+        $this->logger = $logger;
         parent::__construct();
+
+
     }
 
 
