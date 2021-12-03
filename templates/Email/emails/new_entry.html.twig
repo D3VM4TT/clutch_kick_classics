@@ -1,0 +1,66 @@
+{% deprecated 'The "@SyliusShop/Email/orderConfirmation.html.twig" template is deprecated since Sylius 1.8 and will be removed in Sylius 2.0, use "@SyliusCore/Email/layout.html.twig" instead.' %}
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{% block subject %}
+{#    {% include '@SyliusCore/Email/Blocks/OrderConfirmation/_subject.html.twig' %}#}
+{% endblock %}
+
+{% block content %}
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+    </style>
+
+
+    <h2 style="text-align: center;">
+        Entry Successful!
+        <br>
+         Please find entry numbers below.
+    </h2>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Entry Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in order.getItems  %}
+            {% for unit in item.getUnits %}
+                <tr>
+                    <td>Dom</td>
+                    <td>6000</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <img style="width: 100%;" src="{{ absolute_url(asset('assets/shop/img/banner.jpg')) }}" alt="Armstrong">
+{% endblock %}

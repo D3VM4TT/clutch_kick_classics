@@ -1,12 +1,6 @@
 -------------------------------------------
 STEPS
 -------------------------------------------
--> Create a entry form for admins
--> Create a car details page
-    -> this will have the specs of the car
-    -> and a gallery
-    -> Shipping is free locally
-    -> International orders have shipping
-    -> On order completion send email with entry codes
-    ->
-
+-> Update 'Contact Us' email
+-> Update Thank You page layout
+-> add Paypal payment method

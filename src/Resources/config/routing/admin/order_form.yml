@@ -1,4 +1,4 @@
-sylius_complete_order_form:
-  path: /order/form
-  methods: [GET]
-  controller: App\Controller\EntryController::indexAction
+#sylius_complete_order_form:
+#  path: /order/form
+#  methods: [GET]
+#  controller: App\Controller\EntryController::indexAction

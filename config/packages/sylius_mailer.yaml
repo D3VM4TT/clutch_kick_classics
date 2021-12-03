@@ -1,0 +1,8 @@
+sylius_mailer:
+  sender:
+    name: Example.com
+    address: no-reply@example.com
+  emails:
+    new_entry:
+      subject: "You have been entered into the competition!"
+      template: "Email/emails/new_entry.html.twig"

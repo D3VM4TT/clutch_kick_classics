@@ -51,6 +51,12 @@ services:
         public: true
         arguments:
             - '@monolog.logger'
+            - '@App\EmailManager\NewEntryEmailManager'
+
+    App\EmailManager\NewEntryEmailManager:
+        public: true
+        arguments: [ '@sylius.email_sender', '@sylius.availability_checker', '@sylius.repository.admin_user' ]
+
 
     app.listener.admin.menu_builder:
         class: App\Menu\AdminMenuListener
