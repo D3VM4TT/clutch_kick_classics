@@ -1,11 +1,17 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
+
+{% block banner %}
+            {% include '@SyliusShop/Homepage/_banner.html.twig' %}
+{% endblock %}
+
 {% block content %}
 
-    <div class="homepage">
-        <div class="ui hidden divider"></div>
+    <div class="homepage container">
 
-        {% include '@SyliusShop/Homepage/_banner.html.twig' %}
+        <h1 class="text-4xl font-bold text-center py-16">
+            Free entry with every item purchased!
+        </h1>
 
         {% include '@SyliusShop/Homepage/_productsGrid.html.twig' %}
 

@@ -43,10 +43,13 @@
         <br>
          Please find entry numbers below.
     </h2>
+
     <table class="styled-table">
         <thead>
         <tr>
             <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
             <th>Entry Number</th>
         </tr>
         </thead>
@@ -55,12 +58,27 @@
             {% for unit in item.getUnits %}
                 <tr>
                     <td>Dom</td>
+                    <td>matt@eulersolutions.co.za</td>
+                    <td>08349848013</td>
+                    <td>6000</td>
+                </tr>
+
+                       <tr>
+                    <td>Dom</td>
+                    <td>matt@eulersolutions.co.za</td>
+                    <td>08349848013</td>
                     <td>6000</td>
                 </tr>
             {% endfor %}
         {% endfor %}
-
         </tbody>
     </table>
+
+
+
     <img style="width: 100%;" src="{{ absolute_url(asset('assets/shop/img/banner.jpg')) }}" alt="Armstrong">
+
+    <h6 style="text-align: center;">
+        Cras eu nulla gravida, ullamcorper ligula eu, congue nulla. Phasellus ut scelerisque tortor. Vivamus suscipit eu
+    </h6>
 {% endblock %}

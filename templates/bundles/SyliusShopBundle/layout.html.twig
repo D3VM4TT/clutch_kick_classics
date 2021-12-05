@@ -35,7 +35,12 @@
                 {{ sylius_template_event('sylius.shop.layout.header') }}
             </header>
         {% endblock %}
+    </div>
 
+    {% block banner %}
+    {% endblock %}
+
+    <div class="ui container">
         {% include '@SyliusShop/_flashes.html.twig' %}
 
         {{ sylius_template_event('sylius.shop.layout.before_content') }}

@@ -1,6 +1,16 @@
 -------------------------------------------
 STEPS
 -------------------------------------------
--> Update 'Contact Us' email
+-> Create Banner Design (refer to banner.png)
+-> Update social media links in footer
+-> Create Terms & Conditions page
+-> Create a Car details page
+-> Setup Contact us page
 -> Update Thank You page layout
 -> add Paypal payment method
+-> remove returns policy from footer
+-> create a delivery and shipping page
+-> Setup a payment method for card
+-> Entry numbers incrementing from 1
+-> Show entries on order screen
+-> Add entires to summary screen
