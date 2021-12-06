@@ -1,4 +1,10 @@
 sylius_terms_and_conditions:
   path: /terms-and-conditions
   methods: [GET]
-  controller: App\Controller\TermsAndConditionsController::indexAction
+  controller: App\Controller\ShopController::termsAndConditionsAction
+
+sylius_privacy_policy:
+  path: /privacy-policy
+  methods: [GET]
+  controller: App\Controller\ShopController::privacyPolicyAction
+

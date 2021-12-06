@@ -37,19 +37,33 @@
         }
     </style>
 
+    <h2 style="text-align: center;">Purchase Successful!</h2>
+    <p>
+        Dear {{ order.customer.firstName ~ ' '  ~ order.customer.lastName }} ,
+    </p>
+    <p>
+        Thank you for your purchase from <a style="color: #1abb9c; text-decoration: none;" target="_blank" href="https://www.clutchkickclassics.co.za/">Clutchkickclassics</a>.
+        Please find your entry number/s for the giveaway below.
+        Good Luck!
+    </p>
 
-    <h2 style="text-align: center;">
-        Entry Successful!
-        <br>
-         Please find entry numbers below.
-    </h2>
+    <ul style="list-style: none;">
+        <li>Name: <span style="font-weight: bold">{{ order.customer.firstName ~ ' ' ~ order.customer.lastName }}</span></li>
+        <li>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></li>
+        <li>Phone: <span style="font-weight: bold">{{ order.customer.phoneNumber }}</span></li>
+    </ul>
+
+{#    <p>Name: <span style="font-weight: bold">{{ order.customer.firstName ~ ' ' ~ order.customer.lastName }}</span></p>#}
+{#    <p>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></p>#}
+{#    <p>Phone: <span style="font-weight: bold">{{ order.customer.phoneNumber }}</span></p>#}
 
     <table class="styled-table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+{#            <th>Name</th>#}
+{#            <th>Email</th>#}
+{#            <th>Phone</th>#}
+            <th>Item Description</th>
             <th>Entry Number</th>
         </tr>
         </thead>
@@ -57,16 +71,10 @@
         {% for item in order.getItems  %}
             {% for unit in item.getUnits %}
                 <tr>
-                    <td>Dom</td>
-                    <td>matt@eulersolutions.co.za</td>
-                    <td>08349848013</td>
-                    <td>6000</td>
-                </tr>
-
-                       <tr>
-                    <td>Dom</td>
-                    <td>matt@eulersolutions.co.za</td>
-                    <td>08349848013</td>
+{#                    <td>Dom</td>#}
+{#                    <td>matt@eulersolutions.co.za</td>#}
+{#                    <td>08349848013</td>#}
+                    <td>Clutch Kick Ashtray </td>
                     <td>6000</td>
                 </tr>
             {% endfor %}
@@ -74,11 +82,6 @@
         </tbody>
     </table>
 
-
-
     <img style="width: 100%;" src="{{ absolute_url(asset('assets/shop/img/banner.jpg')) }}" alt="Armstrong">
 
-    <h6 style="text-align: center;">
-        Cras eu nulla gravida, ullamcorper ligula eu, congue nulla. Phasellus ut scelerisque tortor. Vivamus suscipit eu
-    </h6>
 {% endblock %}
