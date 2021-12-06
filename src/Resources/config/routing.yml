@@ -2,6 +2,8 @@ order_item_unit_admin:
   resource: 'admin_routing.yml'
   prefix: /admin
 
+shop_routes:
+  resource: 'routing/shop/routing.yml'
 
 sylius_complete_order_form:
   path: /order/form

@@ -1,0 +1,4 @@
+sylius_terms_and_conditions:
+  path: /terms-and-conditions
+  methods: [GET]
+  controller: App\Controller\TermsAndConditionsController::indexAction
