@@ -63,16 +63,18 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
-#    site_update_manager.superadmin:
-#        class: App\Service\SiteUpdateManager
-#        # you CAN still use autowiring: we just want to show what it looks like without
-#        autowire: false
-#        # manually wire all arguments
-#        arguments:
-#            - '@App\Service\MessageGenerator'
-#            - '@mailer'
-#            - 'superadmin@example.com'
+    app.payfast_payment:
+        public: true
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [  App\Payum\PayfastPaymentGatewayFactory ]
+        tags:
+            - { name: payum.gateway_factory_builder, factory: payfast_payment }
 
+    App\Form\Type\PayfastGatewayConfigurationType:
+        public: true
+        tags:
+            - { name: payfast.gateway_configuration_type, type: payfast_payment, label: 'Payfast Payment' }
+            - { name: form.type }
 
 
 

@@ -1,29 +1,146 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
-{% block title %}{{ product.name }} | {{ parent() }}{% endblock %}
+
+{% block banner %}
+    {% include '@SyliusShop/Homepage/_banner.html.twig' %}
+{% endblock %}
 
 {% block content %}
-{% include '@SyliusShop/Product/Show/_breadcrumb.html.twig' %}
-<div class="ui hidden divider"></div>
+<style>
+        /* The grid: Four equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 10px;
+        }
 
-<div class="ui two column stackable grid">
-    <div class="column">
-        {{ sylius_template_event('sylius.shop.product.show.left_sidebar', _context) }}
-    </div>
-    <div class="column">
-        {{ sylius_template_event('sylius.shop.product.show.right_sidebar', _context) }}
-    </div>
-</div>
+        /* Style the images inside the grid */
+        .column img {
+            opacity: 0.8;
+            cursor: pointer;
+        }
 
-{{ sylius_template_event('sylius.shop.product.show.content', _context) }}
+        .column img:hover {
+            opacity: 1;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* The expanding image container (positioning is needed to position the close button and the text) */
+        .container {
+            position: relative;
+            display: none;
+        }
+
+        /* Expanding image text */
+        #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Closable button inside the image */
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1 class="text-4xl font-bold text-center py-16 text-current text-gray-500">
+        RB Powered 1928 Armstrong Siddeley
+    </h1>
+
+    <!-- The grid: four columns -->
+    <div class="row">
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_19.jpg') }}" id="img_1" alt="Nature" onclick="expandImg(this);">
+        </div>
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_20.jpg') }}" alt="Snow" onclick="expandImg(this);">
+        </div>
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_21.jpg') }}" alt="Mountains" onclick="expandImg(this);">
+        </div>
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_22.jpg') }}" alt="Lights" onclick="expandImg(this);">
+        </div>
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_23.jpg') }}" alt="Lights" onclick="expandImg(this);">
+        </div>
+        <div class="column">
+            <img src="{{ asset('assets/shop/img/car_images/car_24.jpg') }}" alt="Lights" onclick="expandImg(this);">
+        </div>
+    </div>
+
+    <!-- The expanding image container -->
+    <div class="container">
+        <!-- Close the image -->
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+        <!-- Expanded image -->
+        <img id="expandedImg" style="width:100%">
+
+        <!-- Image text -->
+        <div id="imgtext"></div>
+    </div>
+
+    <div class="flex mt-7">
+        <div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden w-full">
+            <div class="md:flex">
+                <div class="p-8">
+                    <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+                        1928 Armstrong Siddeley Specs:
+                    </h5>
+                        <ul class="pl-7 list-disc racking-wide text-lg text-gray-500 font-semibold">
+                            <li>1928 Armstrong Siddeley base</li>
+                            <li>Roof has been dropped by 140mm plus</li>
+                            <li>RB 25 Engine</li>
+                            <li>Stainless steel turbo manifold</li>
+                            <li>Full stainless steel exhaust</li>
+                            <li>Solid cast brass hoor hinges</li>
+                            <li>Genuine leather interior</li>
+                            <li>Dicktator 60-2 management system</li>
+                            <li>Disc brakes front and rear</li>
+                            <li>Independent front suspension</li>
+                            <li>Custom prop shaft</li>
+                            <li>Stainless steel front grill</li>
+                            <li>Custom carpentry throughout</li>
+                            <li>Genuine Armstrong Siddeley grill mascot (Sphinx)</li>
+                            <li>Aluminium custom made fuel tank</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
-
 <script type="text/javascript">
-    lightbox.option({
-        'albumLabel': '{{ 'sylius.lightbox.image_album_label'|trans|escape('js') }}'
-    });
+    function expandImg(img) {
+        // Get the expanded image
+        var expandImg = document.getElementById("expandedImg");
+        // Get the image text
+        var imgText = document.getElementById("imgtext");
+        // Use the same src in the expanded image as the image being clicked on from the grid
+        expandImg.src = img.src;
+        // Use the value of the alt attribute of the clickable image as text inside the expanded image
+        imgText.innerHTML = img.alt;
+        // Show the container element (hidden with CSS)
+        expandImg.parentElement.style.display = "block";
+    }
+    expandImg(document.getElementById("img_1"));
 </script>
 {% endblock %}

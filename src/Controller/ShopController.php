@@ -17,9 +17,14 @@ class ShopController extends AbstractController
         return $this->render('@SyliusShop/TermsAndConditions/index.html.twig', );
     }
 
-    public function PrivacyPolicyAction(Request $request): Response
+    public function privacyPolicyAction(Request $request): Response
     {
         return $this->render('@SyliusShop/PrivacyPolicy/index.html.twig');
+    }
+
+    public function theCarAction(Request $request): Response
+    {
+        return $this->render('@SyliusShop/TheCar/show.html.twig');
     }
 
 }

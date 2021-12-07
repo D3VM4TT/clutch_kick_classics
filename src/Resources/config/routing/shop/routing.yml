@@ -8,3 +8,9 @@ sylius_privacy_policy:
   methods: [GET]
   controller: App\Controller\ShopController::privacyPolicyAction
 
+sylius_the_car:
+  path: /1928-Armstrong-Siddeley
+  methods: [GET]
+  controller: App\Controller\ShopController::theCarAction
+
+
