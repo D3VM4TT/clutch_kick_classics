@@ -63,18 +63,15 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
-    app.payfast_payment:
-        public: true
+    app.sylius_payment:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [  App\Payum\PayfastPaymentGatewayFactory ]
+        arguments: [ App\Payum\SyliusPaymentGatewayFactory ]
         tags:
-            - { name: payum.gateway_factory_builder, factory: payfast_payment }
+            - { name: payum.gateway_factory_builder, factory: sylius_payment }
 
-    App\Form\Type\PayfastGatewayConfigurationType:
-        public: true
+    App\Form\Type\SyliusGatewayConfigurationType:
         tags:
-            - { name: payfast.gateway_configuration_type, type: payfast_payment, label: 'Payfast Payment' }
+            - { name: sylius.gateway_configuration_type, type: sylius_payment, label: 'Sylius Payment' }
             - { name: form.type }
-
 
 
