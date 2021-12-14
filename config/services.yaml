@@ -71,7 +71,12 @@ services:
 
     App\Form\Type\SyliusGatewayConfigurationType:
         tags:
-            - { name: sylius.gateway_configuration_type, type: sylius_payment, label: 'Sylius Payment' }
+            - { name: sylius.gateway_configuration_type, type: sylius_payment, label: 'Payfast Payment' }
             - { name: form.type }
 
+    App\Payum\Action\CaptureAction:
+        arguments:
+            - '@sylius.http_client'
+        tags:
+            - { name: payum.action, factory: sylius_payment, alias: payum.action.capture }
 

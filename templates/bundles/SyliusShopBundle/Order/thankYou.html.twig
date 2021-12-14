@@ -1,40 +1,24 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
 {% block content %}
-    <div class="ui hidden divider"></div>
-    <div class="ui grid">
-        <div class="center aligned sixteen wide column">
-            <h1 class="ui icon header">
-                {% set lastPayment = order.payments.last() %}
-                <i class="circular rocket icon"></i>
-                <div class="content" id="sylius-thank-you" {{ sylius_test_html_attribute('thank-you') }}>
-                    {{ 'sylius.ui.thank_you'|trans }}
-                    <div class="sub header">{{ 'sylius.ui.placed_an_order'|trans }}</div>
+    <div class="bg-gray-100">
+        <div class="bg-white p-6  md:mx-auto">
+            <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
+                <path fill="currentColor"
+                      d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                </path>
+            </svg>
+            <div class="text-center">
+                <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Thank You!</h3>
+                <p class="text-gray-600 my-2">Your order has been received and you have been entered into the lucky draw.</p>
+                <p> We have sent your order confirmation and entry number to <span class="font-semibold">{{ order.customer.email }}</span>.</p>
+                <p>Have a great day!</p>
+                <div class="py-10 text-center">
+                    <a href="/" class="px-12 bg-gray-500 hover:bg-gray-700 hover:text-white text-white font-semibold py-3">
+                        Continue Shopping
+                    </a>
                 </div>
-            </h1>
-
-            {{ sylius_template_event('sylius.shop.order.thank_you.after_message', {'order': order}) }}
-
-            {% if lastPayment != false %}
-                {%  if lastPayment.method.instructions is not null %}
-                    <div id="sylius-payment-method-instructions" class="ui segment" {{ sylius_test_html_attribute('payment-method-instructions') }}>
-                        {{ lastPayment.method.instructions }}
-                    </div>
-                {% endif %}
-                <div class="ui hidden divider"></div>
-            {% endif %}
-
-            {% if order.customer.user is not null %}
-                <a href="{{ path('sylius_shop_account_order_show', {'number': order.number}) }}" id="sylius-show-order-in-account" class="ui large blue button" {{ sylius_test_html_attribute('show-order-in-account') }}>{{ 'sylius.ui.view_order'|trans }}</a>
-            {% else %}
-                {% if lastPayment.state != 'completed' %}
-                    <a href="{{ path('sylius_shop_order_show', {'tokenValue': order.tokenValue}) }}" id="payment-method-page" class="ui large blue button" {{ sylius_test_html_attribute('payment-method-page') }}>{{ 'sylius.ui.change_payment_method'|trans }}</a>
-                {% endif %}
-                <a href="{{ path('sylius_shop_register_after_checkout', {'tokenValue': order.tokenValue}) }}" class="ui large green button" {{ sylius_test_html_attribute('create-an-account') }}>
-                    <i class="signup icon"></i>
-                    {{ 'sylius.ui.create_an_account'|trans }}
-                </a>
-            {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
