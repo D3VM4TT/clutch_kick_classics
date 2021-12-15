@@ -29,20 +29,10 @@ class ShopController extends AbstractController
         return $this->render('@SyliusShop/TheCar/show.html.twig');
     }
 
-    public function capturePaymentAction(Request $request): Response
-    {
-        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(28);
-        return $this->render('@SyliusShop/Checkout/capture_payment.html.twig', [
-            'order' => $order
-        ]);
-
-    }
-
-
-    public function processPaymentAction(Request $request): Response
+    public function processPaymentAction($order_id, Request $request): Response
     {
         // get the current order
-        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(53);
+        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find($order_id);
         $stateMachineFactory = $this->container->get('sm.factory');
         $orderCheckoutStateMachine = $stateMachineFactory->get($order, OrderCheckoutTransitions::GRAPH);
 
@@ -87,6 +77,17 @@ class ShopController extends AbstractController
         // TODO: get redirect to work
         return $this->redirectToRoute('sylius_shop_order_thank_you');
 
+    }
+
+    public function viewEmailAction(Request $request): Response
+    {
+        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(55);
+
+        return $this->render('Email/emails/new_entry.html.twig', [
+            'order' => $order,
+            'channel' => $order->getChannel(),
+            'localeCode' => $order->getLocaleCode(),
+        ]);
     }
 
 }

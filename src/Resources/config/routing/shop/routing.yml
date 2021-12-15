@@ -13,15 +13,15 @@ sylius_the_car:
   methods: [GET]
   controller: App\Controller\ShopController::theCarAction
 
-sylius_checkout_capture_payment:
-  path: /capture-payment
-  methods: [GET]
-  controller: App\Controller\ShopController::capturePaymentAction
-
 sylius_checkout_process_payment:
-  path: /process-payment
+  path: /process-payment/{order_id}
   methods: [POST, GET]
   controller: App\Controller\ShopController::processPaymentAction
+
+sylius_checkout_entry_email:
+  path: /entry-email
+  methods: [POST, GET]
+  controller: App\Controller\ShopController::viewEmailAction
 
 
 
