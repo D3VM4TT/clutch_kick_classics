@@ -52,6 +52,7 @@ services:
         arguments:
             - '@monolog.logger'
             - '@App\EmailManager\NewEntryEmailManager'
+            - '@doctrine.orm.entity_manager'
 
     App\EmailManager\NewEntryEmailManager:
         public: true

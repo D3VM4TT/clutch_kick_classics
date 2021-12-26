@@ -19,13 +19,5 @@ final class AdminMenuListener
             ->setLabel('Competition Entries')
             ->setLabelAttribute('icon', 'star');
 
-        $menu['sales']
-            ->addChild('order_form', [
-                'route' => 'sylius_complete_order_form',
-            ])
-            ->setLabel('Order Form')
-            ->setLabelAttribute('icon', 'star');
-
-
     }
 }

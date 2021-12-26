@@ -83,7 +83,13 @@ class ShopController extends AbstractController
     {
         $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(55);
 
-        return $this->render('Email/emails/new_entry.html.twig', [
+//        return $this->render('Email/emails/new_entry.html.twig', [
+//            'order' => $order,
+//            'channel' => $order->getChannel(),
+//            'localeCode' => $order->getLocaleCode(),
+//        ]);
+
+        return $this->render('@SyliusShop/Order/thankYou.html.twig', [
             'order' => $order,
             'channel' => $order->getChannel(),
             'localeCode' => $order->getLocaleCode(),

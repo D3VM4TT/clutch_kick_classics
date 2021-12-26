@@ -13,6 +13,13 @@ sylius_the_car:
   methods: [GET]
   controller: App\Controller\ShopController::theCarAction
 
+
+sylius_how_to_enter:
+  path: /how-to-enter
+  controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: '@SyliusShop/HowToEnter/index.html.twig'
+
 sylius_checkout_process_payment:
   path: /process-payment/{order_id}
   methods: [POST, GET]
