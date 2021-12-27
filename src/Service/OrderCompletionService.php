@@ -39,11 +39,9 @@ class OrderCompletionService
         $this->em = $em;
     }
 
-    public function handleCompetitionEntry(Payment $payment) {
-
-        $this->newEntryEmailManager->sendNewEntryEmail($payment->getOrder());
-        $this->addEntryNumbersToOrder($payment->getOrder());
-
+    public function handleCompetitionEntry(OrderInterface $order) {
+        $this->newEntryEmailManager->sendNewEntryEmail($order);
+        $this->addEntryNumbersToOrder($order);
     }
 
     public function addEntryNumbersToOrder(OrderInterface $order) {

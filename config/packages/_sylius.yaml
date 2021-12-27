@@ -246,13 +246,13 @@ sylius_theme:
 
 
 winzou_state_machine:
-    sylius_payment:
-        class: "%sylius.model.payment.class%"
+    sylius_order_payment:
+        class: "%sylius.model.order.class%"
         callbacks:
             after:
-                sylius_payment:
+                sylius_order_paid:
                     # here you are choosing the transition on which the action should take place - we are using the one we have created before
-                    on: ["complete"]
+                    on: ["pay"]
                     # use service and its method here
                     do: ['@App\Service\OrderCompletionService', "handleCompetitionEntry"]
                     # this will be the object of an Order here
