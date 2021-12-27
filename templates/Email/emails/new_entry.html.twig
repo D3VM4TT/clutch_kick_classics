@@ -47,6 +47,8 @@
         Good Luck!
     </p>
 
+    {{ dump(order.getShippingAddress()) }}
+
     <ul style="list-style: none;">
         <li>Name: <span style="font-weight: bold">{{ order.customer.firstName ~ ' ' ~ order.customer.lastName }}</span></li>
         <li>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></li>

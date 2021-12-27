@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Order\Order;
 use Sylius\Component\Core\OrderCheckoutTransitions;
 use Sylius\Component\Core\OrderPaymentTransitions;
@@ -38,16 +37,8 @@ class ShopController extends AbstractController
 
         // ORDER CHECKOUT PROCESS
 
-        // --- 1. Select Payment ---
-        $shippingMethod = $this->container->get('sylius.repository.shipping_method')->findOneByCode('UPS');
-
-        // Shipments are a Collection, so even though you have one Shipment by default you have to iterate over them
-        foreach ($order->getShipments() as $shipment) {
-            $shipment->setMethod($shippingMethod);
-        }
-
-        $orderCheckoutStateMachine->apply(OrderCheckoutTransitions::TRANSITION_SELECT_SHIPPING);
-        $this->container->get('sylius.manager.order')->flush();
+        // --- 1. Select Shipping Method ---
+        $orderCheckoutStateMachine->apply(OrderCheckoutTransitions::TRANSITION_SKIP_SHIPPING);
 
         // --- 2. Select Payment ---
         // Let's assume that you have a method with code 'paypal' configured
@@ -67,33 +58,31 @@ class ShopController extends AbstractController
 
         // --- 4. Pay for the order ---
         $orderPaymentStateMachine = $stateMachineFactory->get($order, OrderPaymentTransitions::GRAPH);
-//        $orderPaymentStateMachine->apply(OrderPaymentTransitions::TRANSITION_REQUEST_PAYMENT);
         $orderPaymentStateMachine->apply(OrderPaymentTransitions::TRANSITION_PAY);
         $this->container->get('sylius.manager.order')->flush();
 
         $request->getSession()->set('sylius_order_id', $order->getId());
 
-        // redirect to thank you route
-        // TODO: get redirect to work
         return $this->redirectToRoute('sylius_shop_order_thank_you');
 
     }
 
     public function viewEmailAction(Request $request): Response
     {
-        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(55);
-
-//        return $this->render('Email/emails/new_entry.html.twig', [
-//            'order' => $order,
-//            'channel' => $order->getChannel(),
-//            'localeCode' => $order->getLocaleCode(),
-//        ]);
-
-        return $this->render('@SyliusShop/Order/thankYou.html.twig', [
+        // TODO: This order is not fetching all the customer & address details associated to it
+        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(8);
+        dd($order->getShipments());
+        return $this->render('Email/emails/new_entry.html.twig', [
             'order' => $order,
             'channel' => $order->getChannel(),
             'localeCode' => $order->getLocaleCode(),
         ]);
+
+//        return $this->render('@SyliusShop/Order/thankYou.html.twig', [
+//            'order' => $order,
+//            'channel' => $order->getChannel(),
+//            'localeCode' => $order->getLocaleCode(),
+//        ]);
     }
 
 }
