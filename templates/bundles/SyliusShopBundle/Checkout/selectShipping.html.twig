@@ -5,13 +5,19 @@
 {% block title %}Capture Payment | {{ parent() }}{% endblock %}
 
 {% set rand_total = order.getTotal() / 100 %}
+{% set order_name = 'Clutch Kick Classics Order :' ~ order.id %}
+{% set payfast_url = 'https://sandbox.payfast.co.za/eng/process?cmd=_paynow' %}
+{% set payfast_return_url = 'https://1ad5-41-112-163-254.ngrok.io/clutch_kick_classics/public/process-payment/' ~ order.id %}
+{% set payfast_cancel_url = 'https://www.youtube.com/' %}
+{% set payfast_merchant_id = '10024793' %}
 
 {% block content %}
+    {{ dump() }}
     <div class="ui stackable grid">
         <div class="eleven wide column">
             <div class="ui padded segment" id="sylius-shipping-methods">
                 <a
-                    href="https://sandbox.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=10024793&amp;item_name=Clutch Kick Order&amp;amount={{ rand_total }}&amp;return_url=https://2104-41-112-161-161.ngrok.io/clutch_kick_classics/public/process-payment/{{ order.id }}%2F&amp;cancel_url=https%3A%2F%2Fwww.youtube.com%2F" >
+                    href="{{ payfast_url }}&amp;receiver={{ payfast_merchant_id }}&amp;item_name={{ order_name | raw }}&amp;amount={{ rand_total }}&amp;return_url={{ payfast_return_url }}&amp;cancel_url={{ payfast_cancel_url }}" >
                     <img src="https://www.payfast.co.za/images/buttons/dark-large-paynow.png" width="174" height="59" alt="Pay" title="Pay Now with PayFast" />
                 </a>
             </div>

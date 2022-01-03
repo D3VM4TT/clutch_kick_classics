@@ -1,10 +1,4 @@
 -------------------------------------------
 STEPS
 -------------------------------------------
--> Show entries on order screen
--> Add entires to summary screen
--> confirm customer details are saving for a order & add them to the confirmation email
--> get site live
 -> protect processPayment route so that only payfast host can access it
--> Show order summary on payment page
--> make fixed pricing
