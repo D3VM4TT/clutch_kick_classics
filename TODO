@@ -2,3 +2,5 @@
 STEPS
 -------------------------------------------
 -> protect processPayment route so that only payfast host can access it
+-> If in prod mode, use live payfast credentials
+-> Make logo in footer redirect to homepage
