@@ -2,7 +2,7 @@
 {% extends '@SyliusShop/Email/layout.html.twig' %}
 
 {% block subject %}
-{#    {% include '@SyliusCore/Email/Blocks/OrderConfirmation/_subject.html.twig' %}#}
+    Clutch Kick Entry
 {% endblock %}
 
 {% block content %}
@@ -54,16 +54,9 @@
         <li>Order Reference: <span style="font-weight: bold">#{{ order.number }}</span></li>
     </ul>
 
-{#    <p>Name: <span style="font-weight: bold">{{ order.customer.firstName ~ ' ' ~ order.customer.lastName }}</span></p>#}
-{#    <p>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></p>#}
-{#    <p>Phone: <span style="font-weight: bold">{{ order.customer.phoneNumber }}</span></p>#}
-
     <table class="styled-table">
         <thead>
         <tr>
-{#            <th>Name</th>#}
-{#            <th>Email</th>#}
-{#            <th>Phone</th>#}
             <th>Item Description</th>
             <th>Entry Number</th>
         </tr>

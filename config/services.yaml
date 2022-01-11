@@ -50,13 +50,12 @@ services:
     App\Service\OrderCompletionService:
         public: true
         arguments:
-            - '@monolog.logger'
             - '@App\EmailManager\NewEntryEmailManager'
             - '@doctrine.orm.entity_manager'
 
     App\EmailManager\NewEntryEmailManager:
         public: true
-        arguments: [ '@sylius.email_sender', '@sylius.availability_checker', '@sylius.repository.admin_user' ]
+        arguments: [ '@sylius.email_sender']
 
 
     app.listener.admin.menu_builder:

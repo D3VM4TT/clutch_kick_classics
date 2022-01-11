@@ -72,6 +72,9 @@ class ShopController extends AbstractController
     {
         $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(11);
 
+        $orderCompletionService = $this->get('App\Service\OrderCompletionService');
+
+        $orderCompletionService->handleCompetitionEntry($order);
 
         return $this->render('Email/emails/new_entry.html.twig', [
             'order' => $order,

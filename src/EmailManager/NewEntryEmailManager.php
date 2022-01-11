@@ -2,7 +2,6 @@
 
 namespace App\EmailManager;
 
-use Sylius\Bundle\CoreBundle\Mailer\Emails;
 use Sylius\Component\Inventory\Checker\AvailabilityCheckerInterface;
 use Sylius\Component\Mailer\Sender\SenderInterface;
 use Sylius\Component\Order\Model\OrderInterface;
@@ -13,20 +12,11 @@ final class NewEntryEmailManager
     /** @var SenderInterface */
     private $emailSender;
 
-    /** @var AvailabilityCheckerInterface */
-    private $availabilityChecker;
-
-    /** @var RepositoryInterface $adminUserRepository */
-    private $adminUserRepository;
 
     public function __construct(
-        SenderInterface $emailSender,
-        AvailabilityCheckerInterface $availabilityChecker,
-        RepositoryInterface $adminUserRepository
+        SenderInterface $emailSender
     ) {
         $this->emailSender = $emailSender;
-        $this->availabilityChecker = $availabilityChecker;
-        $this->adminUserRepository = $adminUserRepository;
     }
 
     public function sendNewEntryEmail(OrderInterface $order): void
