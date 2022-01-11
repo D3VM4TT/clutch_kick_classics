@@ -3,3 +3,5 @@ STEPS
 -------------------------------------------
 -> protect processPayment route so that only payfast host can access it
 -> test failed payments
+-> emails are not sending all the customer information
+-> entry email does not have a subject

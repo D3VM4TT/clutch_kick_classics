@@ -39,18 +39,18 @@
 
     <h2 style="text-align: center;">Purchase Successful!</h2>
     <p>
-        Dear {{ order.customer.firstName ~ ' '  ~ order.customer.lastName }} ,
+        Dear {{ order.getBillingAddress().getFirstName() ~ ' '  ~ order.getBillingAddress().getLastName() }},
     </p>
     <p>
-        Thank you for your purchase from <a style="color: #1abb9c; text-decoration: none;" target="_blank" href="https://www.clutchkickclassics.co.za/">Clutchkickclassics</a>.
+        Thank you for your purchase from <a style="color: #1abb9c; text-decoration: none;" target="_blank" href="https://www.clutchkickclassics.co.za/">clutchkickclassics.co.za</a>.
         Please find your entry number/s for the giveaway below.
         Good Luck!
     </p>
 
     <ul style="list-style: none;">
-        <li>Name: <span style="font-weight: bold">{{ order.customer.firstName ~ ' ' ~ order.customer.lastName }}</span></li>
+        <li>Name: <span style="font-weight: bold">{{ order.getBillingAddress().getFirstName() ~ ' '  ~ order.getBillingAddress().getLastName() }}</span></li>
         <li>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></li>
-        <li>Phone: <span style="font-weight: bold">{{ order.customer.phoneNumber }}</span></li>
+        <li>Phone: <span style="font-weight: bold">{{ order.getBillingAddress().getPhoneNumber() }}</span></li>
         <li>Order Reference: <span style="font-weight: bold">#{{ order.number }}</span></li>
     </ul>
 
@@ -72,11 +72,8 @@
         {% for item in order.getItems  %}
             {% for unit in item.getUnits %}
                 <tr>
-{#                    <td>Dom</td>#}
-{#                    <td>matt@eulersolutions.co.za</td>#}
-{#                    <td>08349848013</td>#}
-                    <td>Clutch Kick Ashtray </td>
-                    <td>6000</td>
+                    <td>{{ item.productName }}</td>
+                    <td>{{ unit.entryNumber }}</td>
                 </tr>
             {% endfor %}
         {% endfor %}

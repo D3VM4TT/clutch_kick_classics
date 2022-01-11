@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Addressing\Address;
 use App\Entity\Order\Order;
 use Sylius\Component\Core\OrderCheckoutTransitions;
 use Sylius\Component\Core\OrderPaymentTransitions;
@@ -69,9 +70,9 @@ class ShopController extends AbstractController
 
     public function viewEmailAction(Request $request): Response
     {
-        // TODO: This order is not fetching all the customer & address details associated to it
-        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(8);
-        dd($order->getShipments());
+        $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find(11);
+
+
         return $this->render('Email/emails/new_entry.html.twig', [
             'order' => $order,
             'channel' => $order->getChannel(),
