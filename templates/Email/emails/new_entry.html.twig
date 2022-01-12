@@ -1,42 +1,10 @@
-{% deprecated 'The "@SyliusShop/Email/orderConfirmation.html.twig" template is deprecated since Sylius 1.8 and will be removed in Sylius 2.0, use "@SyliusCore/Email/layout.html.twig" instead.' %}
-{% extends '@SyliusShop/Email/layout.html.twig' %}
+{% extends '@SyliusCore/Email/layout.html.twig' %}
 
 {% block subject %}
     Clutch Kick Entry
 {% endblock %}
 
 {% block content %}
-    <style>
-        .styled-table {
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
-            font-family: sans-serif;
-            width: 100%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-        .styled-table thead tr {
-            background-color: #009879;
-            color: #ffffff;
-            text-align: left;
-        }
-        .styled-table th,
-        .styled-table td {
-            padding: 12px 15px;
-        }
-        .styled-table tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        .styled-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-
-        .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
-        }
-    </style>
-
     <h2 style="text-align: center;">Purchase Successful!</h2>
     <p>
         Dear {{ order.getBillingAddress().getFirstName() ~ ' '  ~ order.getBillingAddress().getLastName() }},
@@ -54,22 +22,34 @@
         <li>Order Reference: <span style="font-weight: bold">#{{ order.number }}</span></li>
     </ul>
 
-    <table class="styled-table">
-        <thead>
-        <tr>
-            <th>Item Description</th>
-            <th>Entry Number</th>
+    <table style="
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    ">
+        <thead style="
+             background-color: #009879;
+             color: #ffffff;
+             text-align: left;
+        ">
+        <tr style="border-bottom: 1px solid #dddddd;">
+            <th style="padding: 12px 15px;">Item Description</th>
+            <th style="padding: 12px 15px;">Entry Number</th>
         </tr>
         </thead>
         <tbody>
         {% for item in order.getItems  %}
             {% for unit in item.getUnits %}
-                <tr>
-                    <td>{{ item.productName }}</td>
-                    <td>{{ unit.entryNumber }}</td>
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <td style="padding: 12px 15px;">{{ item.productName }}</td>
+                    <td style="padding: 12px 15px;">#{{ unit.entryNumber }}</td>
                 </tr>
             {% endfor %}
         {% endfor %}
+        <tr style="border-bottom: 2px solid #009879;"></tr>
         </tbody>
     </table>
 
