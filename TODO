@@ -3,4 +3,5 @@ STEPS
 -------------------------------------------
 -> protect processPayment route so that only payfast host can access it
 -> test failed payments
--> new_entry email entry table not rendering css for some reason
+-> Stop sending New order has been created for you email (backend order creation email)
+-> Create a order summary page for users

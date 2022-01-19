@@ -5,7 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <h2 style="text-align: center;">Purchase Successful!</h2>
+    <div style="text-align: center">
+        {{ 'sylius.email.order_confirmation.your_order_number'|trans({}, null, localeCode) }}
+        <div style="margin: 10px 0;">
+      <span style="border: 1px solid #eee; padding: 10px; color: #1abb9c; font-size: 28px;">
+        {{ order.number }}
+      </span>
+        </div>
+        {{ 'sylius.email.order_confirmation.has_been_successfully_placed'|trans({}, null, localeCode) }}
+    </div>
+
+    <br>
+
     <p>
         Dear {{ order.getBillingAddress().getFirstName() ~ ' '  ~ order.getBillingAddress().getLastName() }},
     </p>
@@ -14,14 +25,6 @@
         Please find your entry number/s for the giveaway below.
         Good Luck!
     </p>
-
-    <ul style="list-style: none;">
-        <li>Name: <span style="font-weight: bold">{{ order.getBillingAddress().getFirstName() ~ ' '  ~ order.getBillingAddress().getLastName() }}</span></li>
-        <li>Email: <span style="font-weight: bold">{{ order.customer.email }}</span></li>
-        <li>Phone: <span style="font-weight: bold">{{ order.getBillingAddress().getPhoneNumber() }}</span></li>
-        <li>Order Reference: <span style="font-weight: bold">#{{ order.number }}</span></li>
-    </ul>
-
     <table style="
             border-collapse: collapse;
             margin: 25px 0;
@@ -52,6 +55,14 @@
         <tr style="border-bottom: 2px solid #009879;"></tr>
         </tbody>
     </table>
+
+    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': localeCode}) : url('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': localeCode}) %}
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <a href="{{ url|raw }}" style="display: inline-block; text-align: center; background: #1abb9c; padding: 18px 28px; color: #fff; text-decoration: none; border-radius: 3px;">
+                View my order
+            </a>
+        </div>
 
     <img style="width: 100%;" src="{{ absolute_url(asset('assets/shop/img/banner.jpg')) }}" alt="Armstrong">
 
