@@ -6,4 +6,6 @@ STEPS
 -> Stop sending New order has been created for you email (backend order creation email)
 -> Create a order summary page for users
 
--> re write the entry number calculation
+
+-> add order id to payfast as metadata
+-> Make phonenumber required field

@@ -5,10 +5,10 @@
 {% block title %}Capture Payment | {{ parent() }}{% endblock %}
 
 {% set rand_total = order.getTotal() / 100 %}
-{% set order_name = 'Clutch Kick Classics Order :' ~ order.id %}
+{% set order_name = 'Clutch Kick Classics Order (' ~ order.customer.email ~ ') :' ~ order.id %}
 {% set payfast_url = 'https://sandbox.payfast.co.za/eng/process?cmd=_paynow' %}
-{% set payfast_return_url = app.environment == 'prod' ? 'https://clutchkickclassics.co.za/process-payment/' ~ order.id : 'https://9fda-41-117-147-32.ngrok.io/clutch_kick_classics/public/process-payment/' ~ order.id %}
-{% set payfast_cancel_url = app.environment == 'prod' ? 'https://clutchkickclassics.co.za' : 'https://9fda-41-117-147-32.ngrok.io/clutch_kick_classics/public/' %}
+{% set payfast_return_url = app.environment == 'prod' ? 'https://clutchkickclassics.co.za/process-payment/' ~ order.id : 'https://599d-197-184-175-47.ngrok.io/clutch_kick_classics/public/process-payment/' ~ order.id %}
+{% set payfast_cancel_url = app.environment == 'prod' ? 'https://clutchkickclassics.co.za' : 'https://599d-197-184-175-47.ngrok.io/clutch_kick_classics/public/' %}
 {% set payfast_merchant_id = '10024793' %}
 
 {% block content %}
