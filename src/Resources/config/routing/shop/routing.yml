@@ -20,6 +20,13 @@ sylius_how_to_enter:
   defaults:
     template: '@SyliusShop/HowToEnter/index.html.twig'
 
+
+sylius_fabrication:
+  path: /fabrication
+  controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: '@SyliusShop/Fabrication/index.html.twig'
+
 sylius_checkout_process_payment:
   path: /process-payment/{order_id}
   methods: [POST, GET]

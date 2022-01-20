@@ -40,14 +40,13 @@ class OrderCompletionService
         // Assign a entry number to each OrderItemUnit associated to the specific order
         /** @var OrderItem $item */
         foreach ($order->getItems() as $item) {
-            $iteration = 0;
             /** @var OrderItemUnit $unit */
             foreach ($item->getUnits() as $unit) {
                 if ($unit->getEntryNumber() > 0) {
                     continue;
                 }
-                $iteration++;
-                $unit->setEntryNumber($this->generateEntryNumber($iteration));
+                $entryNumber = $this->generateEntryNumber();
+                $unit->setEntryNumber($entryNumber);
                 $this->em->persist($unit);
                 $this->em->flush();
             }
@@ -59,19 +58,12 @@ class OrderCompletionService
      * If there are no entry numbers in the DB, the entry number will be set to 1.
      *
      */
-    public function generateEntryNumber($iteration) {
-        $entryNumber = 1;
-
-        // get the highest entry number & add 1 to it;
+    public function generateEntryNumber() {
         $query = $this->em->getRepository(OrderItemUnit::class)->createQueryBuilder('s');
         $query->select('s, MAX(s.entryNumber) as entry_number');
-        $highestEntryNumber = $query->getQuery()->getResult();
+        $highestEntryNumber = $query->getQuery()->getResult()[0]['entry_number'];
 
-        if (!empty($highestEntryNumber)) {
-            $entryNumber = $highestEntryNumber[0]['entry_number'] + $iteration;
-        }
-
-        return $entryNumber;
+        return ($highestEntryNumber + 1);
     }
 
 

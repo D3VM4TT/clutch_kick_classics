@@ -14,7 +14,7 @@ use Sylius\Component\Core\Model\OrderItemUnit as BaseOrderItemUnit;
 class OrderItemUnit extends BaseOrderItemUnit
 {
     /**
-     * @ORM\Column(name="entry_number", type="string", nullable=true)
+     * @ORM\Column(name="entry_number", type="integer", nullable=true)
      */
     private $entryNumber;
 

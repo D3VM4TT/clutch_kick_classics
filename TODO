@@ -5,3 +5,5 @@ STEPS
 -> test failed payments
 -> Stop sending New order has been created for you email (backend order creation email)
 -> Create a order summary page for users
+
+-> re write the entry number calculation
