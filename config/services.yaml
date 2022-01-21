@@ -80,3 +80,11 @@ services:
         tags:
             - { name: payum.action, factory: sylius_payment, alias: payum.action.capture }
 
+    app.entries_extension:
+        class: App\Twig\EntriesExtension
+        public: true
+        arguments:
+            - '@Doctrine\ORM\EntityManagerInterface'
+        tags:
+            - { name: twig.extension }
+
