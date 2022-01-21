@@ -63,24 +63,11 @@
 
     <!-- The grid: four columns -->
     <div class="row">
+        {% for i in 1..14 %}
         <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_19.jpg') }}" id="img_1" alt="Nature" onclick="expandImg(this);">
+            <img src="{{ asset('assets/shop/img/car_images/armstrong_' ~ i ~ '.jpg') }}" id="img_{{ i }}" alt="1928 Armstrong Siddeley" onclick="expandImg(this);">
         </div>
-        <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_20.jpg') }}" alt="Snow" onclick="expandImg(this);">
-        </div>
-        <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_21.jpg') }}" alt="Mountains" onclick="expandImg(this);">
-        </div>
-        <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_22.jpg') }}" alt="Lights" onclick="expandImg(this);">
-        </div>
-        <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_23.jpg') }}" alt="Lights" onclick="expandImg(this);">
-        </div>
-        <div class="column">
-            <img src="{{ asset('assets/shop/img/car_images/car_24.jpg') }}" alt="Lights" onclick="expandImg(this);">
-        </div>
+        {% endfor %}
     </div>
 
     <!-- The expanding image container -->
