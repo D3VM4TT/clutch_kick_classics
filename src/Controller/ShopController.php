@@ -36,6 +36,12 @@ class ShopController extends AbstractController
         $stateMachineFactory = $this->container->get('sm.factory');
         $orderCheckoutStateMachine = $stateMachineFactory->get($order, OrderCheckoutTransitions::GRAPH);
 
+        $request->getSession()->set('sylius_order_id', $order->getId());
+
+        if ($order->getPaymentState() === 'paid') {
+            return $this->redirectToRoute('sylius_shop_order_thank_you');
+        }
+
         // ORDER CHECKOUT PROCESS
 
         // --- 1. Select Shipping Method ---
@@ -61,8 +67,6 @@ class ShopController extends AbstractController
         $orderPaymentStateMachine = $stateMachineFactory->get($order, OrderPaymentTransitions::GRAPH);
         $orderPaymentStateMachine->apply(OrderPaymentTransitions::TRANSITION_PAY);
         $this->container->get('sylius.manager.order')->flush();
-
-        $request->getSession()->set('sylius_order_id', $order->getId());
 
         return $this->redirectToRoute('sylius_shop_order_thank_you');
 
