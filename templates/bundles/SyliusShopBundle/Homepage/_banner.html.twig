@@ -66,12 +66,13 @@
                 </button>
             </a>
 
+            {% set maxEntries = 3000 %}
             <h1 class="text-lg font-semibold text-center text-current text-white mt-3">
-                {{ totalEntries() }}/2000 Entries
+                {{ totalEntries() }}/{{ maxEntries}} Entries
             </h1>
 
             <div class="w-full bg-gray-200 rounded-full h-7">
-                <div class="h-7 bg-blue-600 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style="width: {{(totalEntries() / 2000 * 100)}}%">
+                <div class="h-7 bg-blue-600 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style="width: {{(totalEntries() / maxEntries * 100)}}%">
                 </div>
             </div>
 
