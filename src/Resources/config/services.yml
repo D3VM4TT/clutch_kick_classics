@@ -1,3 +1,4 @@
 imports:
   - { resource: resources.yml }
   - { resource: grid.yml }
+  - { resource: ..\..\Twig\services.yml }
