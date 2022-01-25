@@ -10,12 +10,12 @@
 {% set payfast_cancel_url = app.environment == 'prod' ? 'https://clutchkickclassics.co.za' : 'https://0c27-41-117-147-32.ngrok.io/clutch_kick_classics/public/' %}
 
 {#***LIVE***#}
-{#{% set payfast_url = 'https://www.payfast.co.za/eng/process?cmd=_paynow' %}#}
-{#{% set payfast_merchant_id = '18952301' %}#}
+{% set payfast_url = 'https://www.payfast.co.za/eng/process?cmd=_paynow' %}
+{% set payfast_merchant_id = '18952301' %}
 
 {#***SANDBOX***#}
-{% set payfast_url = 'https://sandbox.payfast.co.za/eng/process?cmd=_paynow' %}
-{% set payfast_merchant_id = '10024793' %}
+{#{% set payfast_url = 'https://sandbox.payfast.co.za/eng/process?cmd=_paynow' %}#}
+{#{% set payfast_merchant_id = '10024793' %}#}
 
 {% block content %}
 
