@@ -16,16 +16,16 @@ class ShopController extends AbstractController
 
     public function processPaymentAction($order_id, Request $request): Response
     {
-        if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
-            $origin = $_SERVER['HTTP_ORIGIN'];
-        }
-        else if (array_key_exists('HTTP_REFERER', $_SERVER)) {
-            $origin = $_SERVER['HTTP_REFERER'];
-        } else {
-            $origin = $_SERVER['REMOTE_ADDR'];
-        }
-
-        if (str_contains($origin, 'payfast.co.za')) {
+//        if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
+//            $origin = $_SERVER['HTTP_ORIGIN'];
+//        }
+//        else if (array_key_exists('HTTP_REFERER', $_SERVER)) {
+//            $origin = $_SERVER['HTTP_REFERER'];
+//        } else {
+//            $origin = $_SERVER['REMOTE_ADDR'];
+//        }
+//
+//        if (str_contains($origin, 'payfast.co.za')) {
             // get the current order
             $order = $this->get('doctrine.orm.default_entity_manager')->getRepository(Order::class)->find($order_id);
             $stateMachineFactory = $this->container->get('sm.factory');
@@ -64,7 +64,7 @@ class ShopController extends AbstractController
             $this->container->get('sylius.manager.order')->flush();
 
             return $this->redirectToRoute('sylius_shop_order_thank_you');
-        }
+//        }
 
         return  $this->redirectToRoute('sylius_shop_homepage');
 
