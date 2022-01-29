@@ -2,10 +2,17 @@
 STEPS
 -------------------------------------------
 -> protect processPayment route so that only payfast host can access it
--> test failed payments
--> Stop sending New order has been created for you email (backend order creation email)
 -> Create a order summary page for users
-
-
+-> Fix pay button on Order History.
+-> Add entry number to order details
+-> add more details to public view my order link
 -> add order id to payfast as metadata
 -> Make phonenumber required field
+-> Add a shipping Policy tab https://www.paced1.co.za/policies/shipping-policy
+-> Create a 15% off Coupon
+
+
+-------------------------------------------
+IN PROGRESS
+-------------------------------------------
+-> Update order creation confirmation email

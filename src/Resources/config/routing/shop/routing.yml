@@ -1,18 +1,23 @@
 sylius_terms_and_conditions:
   path: /terms-and-conditions
-  methods: [GET]
-  controller: App\Controller\ShopController::termsAndConditionsAction
+  controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+      template: '@SyliusShop/TermsAndConditions/index.html.twig'
+
 
 sylius_privacy_policy:
   path: /privacy-policy
-  methods: [GET]
-  controller: App\Controller\ShopController::privacyPolicyAction
+  controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+      template: '@SyliusShop/PrivacyPolicy/index.html.twig'
+
 
 sylius_the_car:
   path: /1928-Armstrong-Siddeley
-  methods: [GET]
-  controller: App\Controller\ShopController::theCarAction
-
+  controller:   Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+      template: '@SyliusShop/TheCar/show.html.twig'
+      
 
 sylius_how_to_enter:
   path: /how-to-enter
@@ -27,10 +32,12 @@ sylius_fabrication:
   defaults:
     template: '@SyliusShop/Fabrication/index.html.twig'
 
+
 sylius_checkout_process_payment:
   path: /process-payment/{order_id}
   methods: [POST, GET]
   controller: App\Controller\ShopController::processPaymentAction
+
 
 sylius_checkout_entry_email:
   path: /entry-email
